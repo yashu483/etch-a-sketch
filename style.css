@@ -1,0 +1,184 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+    background: linear-gradient(to bottom right, #4b0082, #00ff80);
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+
+}
+
+.container {
+    height: 100%;
+    width: max-content;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2px 0px 5px 0px;
+
+}
+
+.header {
+    text-align: center;
+    display: flex;
+    flex: 1 1 0;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: auto;
+    padding: 4px auto;
+    margin-top: 2px;
+    border: 8px solid greenyellow;
+    border-radius: 15px;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+}
+
+.heading {
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    font-weight: 400;
+    background: linear-gradient(90deg, red, orange, yellow, rgb(25, 206, 25),
+            red, orange, yellow, rgb(25, 206, 25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0%;
+    font-size: 35px;
+}
+
+.main-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 8px solid greenyellow;
+    border-radius: 20px;
+    margin-top: -8px;
+    margin-bottom: -7px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: max-content;
+}
+
+.board-container {
+    height: 490px;
+    width: 490px;
+    background-color: white;
+    margin: 3px;
+    border: 5px solid rgb(229, 229, 18);
+    border-radius: 5px;
+}
+
+.pen-options,
+.grid-tool {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    padding: 10px;
+    gap: 8px;
+    height: 100%;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pen-color,
+.pen-tool,
+.grid-tool {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-color {
+    color: yellow;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#color-picker,
+#grid-background {
+    width: 80%;
+    height: 30px;
+    border-radius: 10%;
+
+}
+
+.text-options {
+    font-size: 25px;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+    color: #00ff80;
+}
+
+button {
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    width: 125px;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+    border: 3px solid pink;
+    border-radius: 10px;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: greenyellow;
+}
+
+.rainbow:hover {
+    background: linear-gradient(to right, red, orange, yellow,
+            green, blue, indigo, violet);
+}
+
+.grid-size {
+    color: orange;
+    font-size: 16px;
+    margin: 0px;
+}
+
+.text-grid-size {
+    margin: 0;
+    color: yellow;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+    font-size: 18px;
+}
+
+.footer {
+    font-weight: 600;
+    font-size: 20px;
+    height: max-content;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Sour Gummy", "Balthazar", serif;
+    padding: 3px;
+    border: 8px solid greenyellow;
+    border-radius: 15px;
+
+}
+
+.footer-para {
+    text-align: center;
+    flex: 1 1 0;
+    margin: 0%;
+    background: linear-gradient(90deg, red, orange, yellow,
+            green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

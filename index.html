@@ -10,18 +10,52 @@
         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balthazar&family=Fredericka+the+Great&family=Rubik+Glitch&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Etch-a -Sketch</title>
+    <title>Etch-a -Sketch </title>
 </head>
 
 <body>
-    <div>
-        <div class="heading">Etch A Sketch</div>
-        <div class="main-container">
-            <div class="board-container"></div>
-            <div class="option-container"></div>
+    <div class="container">
+        <div class="header">
+            <p class="heading">🎨 Etch A Sketch 🎨</p>
         </div>
-        <div class="footer"></div>
-        <div></div>
+        <div class="main-body">
+            <div class="main-container">
+                <div class="pen-options">
+                    <div class="pen-color">
+                        <div class="text-options">Pen Colors</div>
+                        <button>Black</button>
+                        <button>White</button>
+                        <button class="rainbow">Rainbow</button>
+                    </div>
+                    <label for="colorPicker" class="custom-color">Custom Color</label>
+                    <input type="color" id="color-picker" />
+                    <div class="pen-tool">
+                        <div class="text-options">Pen Tools</div>
+                        <button>Lighten</button>
+                        <button>Darken</button>
+                        <button>Fade</button>
+                        <button>Erase</button>
+                    </div>
+                </div>
+                <div class="board-container">
+                </div>
+                <div class="grid-tool">
+                    <div class="text-options">Grid Tools</div>
+                    <label for="valueBar" class="text-grid-size">Choose Grid Size:</label>
+                    <input type="range" id="valueBar" min="16" max="100" value="50" step="1">
+                    <p class="grid-size">Selected Size: <span id="displayValue">50</span></p>
+                    <label for="colorPicker" class="custom-color">Grid Background</label>
+                    <input type="color" id="grid-background" />
+                    <button class="button-grid">Toggle Grid</button>
+                    <button class="reset">Reset</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer">
+            <p class="footer-para">created by @yashu</p>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
 
