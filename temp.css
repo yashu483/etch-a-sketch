@@ -194,9 +194,9 @@ button:hover {
 
 .cell {
     flex: 1;
-    border: 1px solid black;
+    /* border: 1px solid gray; */
 }
 
 .cell:hover {
-    background-color: lightgray;
+    background-color: greenyellow;
 }
