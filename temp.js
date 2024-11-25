@@ -29,7 +29,13 @@ board.addEventListener('click', (event) => {
 //Set up event listener to get user's input value for grid size
 document.addEventListener("DOMContentLoaded", () => {
     selectedValue = valueBar.value;
-    // Set up an event listener to detect changes
+
+    buttons.forEach((button) => {
+        if (button.id == 'black-pen' || button.id == 'show-grid') {
+            button.isOn = true;
+            button.style.backgroundColor = 'greenyellow';
+        }
+    });
     createGridBoard();
 });
 
@@ -93,16 +99,33 @@ buttons.forEach((item) => {
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if (button.isOn === false) {
-            console.log("first:-- " + button.isOn);
-            button.isOn = true;
-            console.log('then: --' + button.isOn);
-            button.style.backgroundColor = 'greenyellow';
+            if (button.id == 'rainbow-pen') {
+                button.isOn = true;
+                button.className = 'rainbow-click'
+            }
+            else {
+                button.isOn = true;
+                button.style.backgroundColor = 'greenyellow';
+            };
         }
         else if (button.isOn === true) {
-            console.log("first:--" + button.isOn);
-            button.isOn = false;
-            console.log('then: --' + button.isOn);
-            button.style.backgroundColor = 'white';
+            if (button.id == 'rainbow-pen') {
+                button.isOn = false;
+                button.classList.remove('rainbow-click');
+                button.style.backgroundColor = 'white';
+                blackActive();
+                blackClicked();
+            }
+            else if (button.id == 'white-pen') {
+                button.isOn = false;
+                button.style.backgroundColor = 'white';
+                blackActive();
+                blackClicked();
+            }
+            else {
+                button.isOn = false;
+                button.style.backgroundColor = 'white';
+            }
         };
         if (button.id == 'black-pen') {
             if (button.isOn == true) {
@@ -123,20 +146,32 @@ document.addEventListener('mouseup', () => {
 })
 
 //create functions for buttons clicked
-//black color button clicked
+//set function for black color pen option clicked
 function blackClicked() {
-    //   set isOn to false to white and rainbow     //  set bg of to white
-
     buttons.forEach((item) => {
         console.log(item.id + '&&' + item.isOn);
-        if (item.id == 'white-pen' || item.id == 'rainbow-pen' || item.id == 'eraser') {
+        if (item.id == 'white-pen' || item.id == 'eraser') {
             item.isOn = false;
             item.style.backgroundColor = 'white';
-        };
+        }
+        else if (item.id == 'rainbow-pen') {
+            item.isOn = false;
+            item.classList.remove('rainbow-click');
+            item.style.backgroundColor = 'white';
+        }
     });
 
-    //   check if l or d ior f is enabled, and work accordingly
 };
+
+function blackActive() {
+    buttons.forEach((button) => {
+        if (button.id == 'black-pen') {
+            button.isOn = true;
+            button.style.backgroundColor = 'greenyellow';
+            penColor.value = '#000000';
+        }
+    })
+}
 //create function to run the for each button enabled
 
 function runProgrammeByButtons(button) {
