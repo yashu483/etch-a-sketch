@@ -6,6 +6,14 @@ body {
     padding: 0%;
 }
 
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -35,7 +43,7 @@ body {
     justify-content: center;
     flex-direction: row;
     margin-bottom: auto;
-    padding: 4px auto;
+    padding: 10px auto;
     margin-top: 2px;
     border: 8px solid greenyellow;
     border-radius: 15px;
@@ -51,7 +59,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0%;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 .main-body {
@@ -76,8 +84,8 @@ body {
 .board-container {
     display: flex;
     flex-direction: column;
-    height: 480px;
-    width: 480px;
+    height: 525px;
+    width: 525px;
     background-color: white;
     border: 5px solid rgb(229, 229, 18);
     border-radius: 5px;
@@ -122,7 +130,7 @@ body {
 }
 
 .text-options {
-    font-size: 25px;
+    font-size: 30px;
     font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
     color: #00ff80;
 }
@@ -166,6 +174,7 @@ button:hover {
     height: max-content;
     width: auto;
     display: flex;
+    align-items: center;
     justify-content: center;
     text-align: center;
     font-family: "Sour Gummy", "Balthazar", serif;
@@ -176,13 +185,24 @@ button:hover {
 }
 
 .footer-para {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    height: max-content;
+    width: 100px;
     flex: 1 1 0;
     margin: 0%;
     background: linear-gradient(90deg, red, orange, yellow,
             green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.footer-para img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: -4px;
 }
 
 /* selectors for element Nodes made using js */
@@ -194,7 +214,7 @@ button:hover {
 
 .cell {
     flex: 1;
-    /* border: 1px solid gray; */
+    border: 1px solid lightgray;
 }
 
 .cell:hover {

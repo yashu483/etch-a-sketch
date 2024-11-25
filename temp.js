@@ -4,7 +4,6 @@ let selectedValue = 40;
 const valueBar = document.querySelector("#valueBar");
 const displayValue = document.querySelector("#displayValue");
 
-console.log(valueBar.value);
 //Set up event listener to get user's input value for grid size
 document.addEventListener("DOMContentLoaded", () => {
     selectedValue = valueBar.value;
@@ -26,13 +25,11 @@ let board = document.querySelector(".board-container");
 // make function to create grid based on users inputed value
 
 function createGridBoard() {
+
     //remove previous grid so new grid can take place of it
     board.replaceChildren();
-    // make  a loop for continuosly creating block divs so it can store
-    // inline divs size of user inptuted value
 
-    // make a nested loop to append  inline divs size  based on user input value 
-    //for same numbers.
+    //make div as rows for grid by using loop
     selectedValue = valueBar.value;
     for (let i = 0; i < selectedValue; i++) {
         const gridRow = document.createElement('div');
@@ -40,6 +37,7 @@ function createGridBoard() {
 
         board.appendChild(gridRow);
 
+        //make nested loop to add cells to each rows
         for (let j = 0; j < selectedValue; j++) {
             const cell = document.createElement('div');
             cell.classList.add("cell");
@@ -47,8 +45,34 @@ function createGridBoard() {
             gridRow.appendChild(cell);
         }
     }
-    // board.append(...arrayDiv);
+};
 
-}
+//assign all buttons to a variable
+let buttons = document.querySelectorAll("button");
+
+//add a new property to button node to check if its on or off
+let isOn = false;
+buttons.forEach((item) => {
+    item.isOn = false;
+});
+// add event listener to turn off and on button on click
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (button.isOn === false) {
+            console.log("first:-- " + button.isOn);
+            button.isOn = true;
+            console.log('then: --'+ button.isOn);
+            button.style.backgroundColor = 'greenyellow';
+        }
+        else if (button.isOn === true) {
+            console.log("first:--" + button.isOn);
+            button.isOn = false;
+            console.log('then: --'+ button.isOn);
+            button.style.backgroundColor = 'white';
+        }
+    });
+});
+
 
 createGridBoard();

@@ -23,18 +23,19 @@
                 <div class="pen-options">
                     <div class="pen-color">
                         <div class="text-options">Pen Colors</div>
-                        <button>Black</button>
-                        <button>White</button>
-                        <button class="rainbow">Rainbow</button>
+                        <button id="black-pen">Black</button>
+                        <button id="white-pen">White</button>
+                        <button class="rainbow" id="rainbow-pen">Rainbow</button>
+
                     </div>
                     <label for="colorPicker" class="custom-color">Custom Color</label>
                     <input type="color" id="color-picker" />
                     <div class="pen-tool">
                         <div class="text-options">Pen Tools</div>
-                        <button>Lighten</button>
-                        <button>Darken</button>
-                        <button>Fade</button>
-                        <button>Erase</button>
+                        <button id="go-lighten">Lighten</button>
+                        <button id="go-darken">Darken</button>
+                        <button id="go-fade">Fade</button>
+                        <button id="eraser">Erase</button>
                     </div>
                 </div>
                 <div class="board-container">
@@ -42,18 +43,22 @@
                 <div class="grid-tool">
                     <div class="text-options">Grid Tools</div>
                     <label for="valueBar" class="text-grid-size">Choose Grid Size:</label>
-                    <input type="range" id="valueBar" min="16" max="100" value="50" step="1">
-                    <p class="grid-size">Selected Size: <span id="displayValue">50</span></p>
+                    <input type="range" id="valueBar" min="16" max="100" value="30" step="1">
+                    <p class="grid-size">Selected Size: <span id="displayValue">30</span></p>
                     <label for="colorPicker" class="custom-color">Grid Background</label>
                     <input type="color" id="grid-background" />
-                    <button class="button-grid">Toggle Grid</button>
-                    <button class="reset">Reset</button>
+                    <button class="button-grid" id="toogle-grid">Show Grid</button>
+                    <button id="erase-all">Erase All</button>
+                    <button class="reset" id="reset">Reset</button>
                 </div>
 
             </div>
         </div>
         <div class="footer">
-            <p class="footer-para">created by @yashu</p>
+            <div class="footer-para">created by @yashu <a target="_blank"
+                    href="https://github.com/yashu483/etch-a-sketch"><img src="./Assets/images/github-mark.svg"
+                        alt="GitHub Logo"></a>
+            </div>
         </div>
     </div>
 </body>
