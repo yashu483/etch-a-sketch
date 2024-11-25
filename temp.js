@@ -89,7 +89,7 @@ buttons.forEach((item) => {
         this.isOn = value;
         if (value == true) {
             if (item.id == 'black-pen') {
-                blackClicked();
+                blackPenEnabled();
             }
         }
     }
@@ -114,24 +114,47 @@ buttons.forEach((button) => {
                 button.classList.remove('rainbow-click');
                 button.style.backgroundColor = 'white';
                 blackActive();
-                blackClicked();
+                blackPenEnabled();
             }
             else if (button.id == 'white-pen') {
                 button.isOn = false;
                 button.style.backgroundColor = 'white';
                 blackActive();
-                blackClicked();
+                blackPenEnabled();
             }
             else {
                 button.isOn = false;
                 button.style.backgroundColor = 'white';
             }
         };
-        if (button.id == 'black-pen') {
-            if (button.isOn == true) {
-                penColor.value = '#000000';
-            } blackClicked();
+        switch (button.id) {
+            case 'black-pen': {
+                if (button.isOn == true) {
+                    penColor.value = '#000000';
+                };
+                blackPenEnabled();
+            };
+                break;
+            case 'white-pen': {
+                if (button.isOn == true) {
+                    penColor.value = '#FFFFFF';
+                    whitePenEnabled();
+                }
+            };
+                break;
+            case 'rainbow-pen': {
+                if (button.isOn == true) {
+                    rainbowPenEnabled();
+                }
+            };
+                break;
+            case 'go-darken': goDarken();
+                break;
+            case 'go-lighten': goLighten();
+                break;
+            case 'go-fade': goFade();
         }
+
     });
 });
 
@@ -146,8 +169,8 @@ document.addEventListener('mouseup', () => {
 })
 
 //create functions for buttons clicked
-//set function for black color pen option clicked
-function blackClicked() {
+//make function for black color pen option clicked
+function blackPenEnabled() {
     buttons.forEach((item) => {
         console.log(item.id + '&&' + item.isOn);
         if (item.id == 'white-pen' || item.id == 'eraser') {
@@ -163,12 +186,67 @@ function blackClicked() {
 
 };
 
+//make function for white-pen color enabled
+function whitePenEnabled() {
+    buttons.forEach((item) => {
+        if (item.id == 'black-pen' || item.id == 'eraser') {
+            item.isOn = false;
+            item.style.backgroundColor = 'white';
+        }
+        else if (item.id == 'rainbow-pen') {
+            item.isOn = false;
+            item.classList.remove('rainbow-click');
+            item.style.backgroundColor = 'white';
+        }
+    })
+};
+
+//make function for rainbow color pen enabled
+function rainbowPenEnabled() {
+    buttons.forEach((item) => {
+        if (item.id == 'black-pen' || item.id == 'eraser' || item.id == 'white-pen') {
+            item.isOn = false;
+            item.style.backgroundColor = 'white';
+        }
+    })
+}
+
 function blackActive() {
     buttons.forEach((button) => {
         if (button.id == 'black-pen') {
             button.isOn = true;
             button.style.backgroundColor = 'greenyellow';
             penColor.value = '#000000';
+        }
+    })
+}
+
+// make function for lightner enabled
+function goLighten() {
+    buttons.forEach((button) => {
+        if (button.id == 'go-darken' || button.id == 'go-fade') {
+            button.isOn = false;
+            button.style.backgroundColor = 'white';
+        }
+    });
+};
+
+//make function for darkner enabled
+function goDarken() {
+    buttons.forEach((button) => {
+        if (button.id == 'go-lighten' || button.id == 'go-fade') {
+            button.isOn = false;
+            button.style.backgroundColor = 'white'
+        }
+    })
+};
+
+//make function for fade enabled
+function goFade() {
+    buttons.forEach((button) => {
+        if (button.id == 'go-lighten' || button.id == 'go-darken') {
+            button.isOn = false;
+            button.style.backgroundColor = 'white';
         }
     })
 }

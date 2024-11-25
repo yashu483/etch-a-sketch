@@ -118,7 +118,7 @@ body {
     color: yellow;
     font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
     font-size: 18px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 #color-picker,
@@ -171,6 +171,22 @@ button:hover {
     color: yellow;
     font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
     font-size: 18px;
+}
+
+.custom-bg {
+    margin-top: -5px;
+    color: yellow;
+    font-family: "Sour Gummy", "Fredericka the Great", "Architects Daughter", "Rubik Glitch";
+    font-size: 18px;
+}
+
+#white-grid {
+    margin-top: -4px;
+}
+
+#grid-background {
+    margin-top: -5px;
+    margin-bottom: 13px;
 }
 
 .footer {
