@@ -87,7 +87,7 @@ body {
     height: 550px;
     width: 550px;
     background-color: white;
-    border: 5px solid rgb(229, 229, 18);
+    border: 5px solid darkturquoise;
     border-radius: 5px;
     opacity: 1;
 }

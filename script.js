@@ -132,10 +132,118 @@ board.addEventListener('click', (event) => {
     let target = event.target;
     let color = penColor.value;
     if (target.className == 'cell') {
-        target.penUsed = true;
-        target.style.backgroundColor = color;
+
+        const cells = document.querySelectorAll('.cell');
+        const eraser = document.querySelector('#eraser');
+        const lighten = document.querySelector('#go-lighten');
+        const darken = document.querySelector("#go-darken");
+        const fade = document.querySelector('#go-fade');
+
+        //lighten pen
+        buttons.forEach((button) => {
+            if (button.id == 'go-lighten' && button.isOn == true && eraser.isOn == false) {
+
+                let opacity = parseFloat(getComputedStyle(target).getPropertyValue('opacity'));
+
+                if (opacity <= 0.1) {
+                    target.classList.add('cell');
+                    target.style.opacity = '1';
+                } else {
+                    opacity = (opacity - 0.15).toFixed(1);
+                    target.style.opacity = `${opacity}`;
+                };
+                target.penUsed = true;
+                target.style.backgroundColor = penColor.value;
+            }
+        });
+
+        //darken pen
+        buttons.forEach((button) => {
+            if (button.id == 'go-darken' && button.isOn == true && eraser.isOn == false) {
+
+                let opacity = parseFloat(getComputedStyle(target).getPropertyValue('opacity'));
+                if (opacity >= 1) {
+                    target.classList.add('cell');
+                    target.style.opacity = '0.2';
+                    target.penUsed = true;
+                    target.style.backgroundColor = penColor.value;
+                }
+                else {
+                    target.classList.add('cell');
+                    opacity = (opacity + 0.1).toFixed(1);
+                    target.style.opacity = `${opacity}`;
+                    target.penUsed = true;
+                    target.style.backgroundColor = penColor.value;
+                };
+            }
+        });
+
+        // go fade pen
+        buttons.forEach((button) => {
+            if (button.id == 'go-fade' && button.isOn == true && eraser.isOn == false) {
+
+                // Function to fade out a single element
+                function fadeOutElement(element, duration) {
+                    const interval = 50; // Time between each step (ms)
+                    const steps = duration / interval; // Total number of steps
+                    let opacity = 1; // Start fully visible
+                    element.penUsed = true;
+                    element.style.backgroundColor = penColor.value;
+
+                    function fadeStep() {
+                        opacity -= 1 / steps; // Decrease opacity incrementally
+                        if (opacity <= 0) {
+                            opacity = 1;
+                            element.style.backgroundColor = gridBackgroundColor.value;
+                            element.penUsed = false;
+                            element.style.opacity = `${opacity}`; // Hide element completely
+                            return; // Stop further steps
+                        }
+                        element.style.opacity = opacity.toFixed(2); // Update opacity
+                        setTimeout(fadeStep, interval); // Schedule the next step
+                    }
+
+                    fadeStep(); // Start the fade-out process
+                };
+                fadeOutElement(target, 10000); // 5 seconds duration
+            }
+        });
+
+        //eraser
+        buttons.forEach((button) => {
+            if (button.id == 'eraser' && button.isOn == true) {
+                console.log(button.isOn);
+                target.penUsed = false;
+                target.style.backgroundColor = gridBackgroundColor.value;
+                target.style.opacity = 1;
+                return;
+            }
+
+        });
+
+        // black pen and white pen
+        buttons.forEach((button) => {
+            if ((button.id == 'back-pen' || button.id == 'white-pen') &&
+                lighten.isOn == false && darken.isOn == false && fade.isOn == false && eraser.isOn == false) {
+                target.penUsed = true;
+                target.style.backgroundColor = penColor.value;
+                target.style.opacity = 1;
+            }
+        });
+
+        buttons.forEach((button) => {
+            if (button.id == 'rainbow-pen' && button.isOn == true && eraser.isOn == false) {
+                target.penUsed = true;
+                function getRandomColor() {
+                    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                };
+                penColor.value = getRandomColor();
+                target.style.backgroundColor = penColor.value;
+                target.style.opacity = 1;
+            }
+        })
     }
-})
+});
 
 //Set up event listener to get user's input value for grid size
 document.addEventListener("DOMContentLoaded", () => {
@@ -169,6 +277,7 @@ function createGridBoard() {
 
     //remove previous grid so new grid can take place of it
     board.replaceChildren();
+    const showGrid = document.querySelector('#show-grid');
 
     //make div as rows for grid by using loop
     selectedValue = valueBar.value;
@@ -182,7 +291,11 @@ function createGridBoard() {
         for (let j = 0; j < selectedValue; j++) {
             const cell = document.createElement('div');
             cell.classList.add("cell");
+            cell.style.backgroundColor = gridBackgroundColor.value;
             cell.penUsed = false;
+            if (showGrid.isOn == false) {
+                cell.style.border = 'none';
+            }
             gridRow.appendChild(cell);
         };
     };
@@ -202,21 +315,7 @@ inputs.forEach((input) => {
     if (input.id == 'color-picker' || input.id == 'grid-background') {
         input.isOn = false;
     }
-})
-
-/* Object.defineProperty(item, 'isOn', {
-    get() {
-        return this.isOn = false;
-    },
-    set(value) {
-        this.isOn = value;
-        if (value == true) {
-            if (item.id == 'black-pen') {
-                blackPenEnabled();
-            }
-        }
-    }
-}) */
+});
 
 // add event listener to turn off and on buttons on click
 buttons.forEach((button) => {
@@ -261,6 +360,13 @@ buttons.forEach((button) => {
                 resetClicked();
             }
             else {
+
+                if (button.id == 'go-lighten' || button.id == 'go-darken' || button.id == 'go-fade') {
+                    normalMode();
+                    const normalButton = document.querySelector('#normal');
+                    normalButton.style.backgroundColor = 'greenyellow';
+                    normalButton.isOn = true;
+                }
                 button.isOn = false;
                 button.style.backgroundColor = 'white';
             }
@@ -326,6 +432,20 @@ buttons.forEach((button) => {
                 whiteGrid.classList.add('button');
             };
                 break;
+            case 'show-grid': {
+                const cells = document.querySelectorAll('.cell');
+
+                if (button.isOn == true) {
+                    cells.forEach((cell) => {
+                        cell.style.border = `1px solid lightgray`;
+                    })
+                }
+                else if (button.isOn == false) {
+                    cells.forEach((cell) => {
+                        cell.style.border = 'none';
+                    })
+                }
+            }
 
         }
 
@@ -504,6 +624,7 @@ function resetClicked() {
 
     // set grid size to 30 * 30
     valueBar.value = 30;
+    displayValue.textContent = valueBar.value;
     createGridBoard();
 
     buttons.forEach((button) => {
@@ -522,5 +643,4 @@ function resetClicked() {
             button.classList.add('button');
         }
     })
-}
-//create function to run the for each button enabled
+};
