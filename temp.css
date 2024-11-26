@@ -84,11 +84,12 @@ body {
 .board-container {
     display: flex;
     flex-direction: column;
-    height: 525px;
-    width: 525px;
+    height: 550px;
+    width: 550px;
     background-color: white;
     border: 5px solid rgb(229, 229, 18);
     border-radius: 5px;
+    opacity: 1;
 }
 
 .pen-options,
@@ -136,7 +137,7 @@ body {
 }
 
 button {
-    font-size: 16px;
+    font-size: 20px;
     background-color: white;
     color: black;
     width: 125px;
@@ -148,6 +149,10 @@ button {
 button:hover {
     transform: scale(1.05);
     background-color: greenyellow;
+}
+
+.rainbow {
+    background: white;
 }
 
 .rainbow:hover {
