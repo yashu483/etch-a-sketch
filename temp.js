@@ -524,11 +524,3 @@ function resetClicked() {
     })
 }
 //create function to run the for each button enabled
-
-function runProgrammeByButtons(button) {
-
-};
-
-function runProgrammeByInputs() {
-
-}
