@@ -169,6 +169,7 @@ function createGridBoard() {
 
     //remove previous grid so new grid can take place of it
     board.replaceChildren();
+    const showGrid = document.querySelector('#show-grid');
 
     //make div as rows for grid by using loop
     selectedValue = valueBar.value;
@@ -182,7 +183,11 @@ function createGridBoard() {
         for (let j = 0; j < selectedValue; j++) {
             const cell = document.createElement('div');
             cell.classList.add("cell");
+            cell.style.backgroundColor = gridBackgroundColor.value;
             cell.penUsed = false;
+            if (showGrid.isOn == false) {
+                cell.style.border = 'none';
+            }
             gridRow.appendChild(cell);
         };
     };
@@ -261,6 +266,12 @@ buttons.forEach((button) => {
                 resetClicked();
             }
             else {
+                normalMode();
+                if (button.id == 'go-lighten' || button.id == 'go-darken' || button.id == 'go-fade') {
+                    const normalButton = document.querySelector('#normal');
+                    normalButton.style.backgroundColor = 'greenyellow';
+                    normalButton.isOn = true;
+                }
                 button.isOn = false;
                 button.style.backgroundColor = 'white';
             }
@@ -326,6 +337,20 @@ buttons.forEach((button) => {
                 whiteGrid.classList.add('button');
             };
                 break;
+            case 'show-grid': {
+                const cells = document.querySelectorAll('.cell');
+
+                if (button.isOn == true) {
+                    cells.forEach((cell) => {
+                        cell.style.border = `1px solid lightgray`;
+                    })
+                }
+                else if (button.isOn == false) {
+                    cells.forEach((cell) => {
+                        cell.style.border = 'none';
+                    })
+                }
+            }
 
         }
 
@@ -504,6 +529,7 @@ function resetClicked() {
 
     // set grid size to 30 * 30
     valueBar.value = 30;
+    displayValue.textContent = valueBar.value;
     createGridBoard();
 
     buttons.forEach((button) => {
