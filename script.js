@@ -330,6 +330,7 @@ buttons.forEach((button) => {
                 const cells = document.querySelectorAll('.cell');
                 cells.forEach((cell) => {
                     cell.style.backgroundColor = gridBackgroundColor.value;
+                    cell.penUsed = false;
                 })
             }
             else if (button.id == 'reset') {
