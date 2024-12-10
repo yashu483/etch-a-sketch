@@ -331,6 +331,7 @@ buttons.forEach((button) => {
                 cells.forEach((cell) => {
                     cell.style.backgroundColor = gridBackgroundColor.value;
                     cell.penUsed = false;
+                    cell.style.opacity = '1';
                 })
             }
             else if (button.id == 'reset') {
